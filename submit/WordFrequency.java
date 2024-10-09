@@ -67,7 +67,4 @@ public class WordFrequency {
     public int hashCode() {
         return word.toLowerCase().hashCode();         // case-insensitivity
     }
-
-
-    
 }

@@ -110,7 +110,7 @@ public class HashWordsTest {
         hashWords.addWord("dog");
         hashWords.addWord("bird");
         hashWords.addWord("dog");
-        assertEquals("Most common word should be 'dog'", "dog", hashWords.mostCommonWord());
+        assertEquals("Most common word will be 'dog'", "dog", hashWords.mostCommonWord());
     }
 
     /**
@@ -204,7 +204,7 @@ public class HashWordsTest {
         hashWords.addWord("cab"); // same ASCII sum
 
         assertTrue("Contains 'abc' should be true", hashWords.contains("abc"));
-        assertTrue("Contains 'bac' should be true", hashWords.contains("bac"));
+        assertTrue("Contain 'bac' should be true", hashWords.contains("bac"));
         assertTrue("Contains 'cab' should be true", hashWords.contains("cab"));
         assertEquals("Number of unique words should be 3", 3, hashWords.numUniqueWordsInTable());
     }
@@ -255,14 +255,24 @@ public class HashWordsTest {
         hashWords.addWord("bird");
 
         // After rehashing make sure the original words are present
-        assertTrue("Hash table should still contain 'cat' after rehashing",
+        assertTrue("Hash table still contain 'cat' after rehashing",
                 hashWords.contains("cat"));
-        assertTrue("Hash table should still contain 'dog' after rehashing",
+        assertTrue("Hash table still contain 'dog' after rehashing",
                 hashWords.contains("dog"));
-        assertTrue("Hash table should still contain 'fish' after rehashing",
+        assertTrue("Hash table still contain 'fish' after rehashing",
                 hashWords.contains("fish"));
-        assertTrue("Hash table should still contain 'bird' after rehashing",
+        assertTrue("Hash table still contain 'bird' after rehashing",
                 hashWords.contains("bird"));
     }
 
+    /**
+     * Test empty hash words.
+     */
+    @Test
+    public void testEmptyHashWords() {
+        HashWords emptyHashWords = new HashWords(10);
+        assertEquals("Table has size 0", 0, emptyHashWords.numUniqueWordsInTable());
+        assertFalse("Table will not contain words", emptyHashWords.contains("test!"));
+    }
+    
 }

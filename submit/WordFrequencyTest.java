@@ -187,7 +187,7 @@ public class WordFrequencyTest {
      */
     @Test
     public void testGetWord() {
-        assertEquals("getWord should return 'hello'", "hello", wordFreq.getWord());
+        assertEquals("getWord return 'hello'", "hello", wordFreq.getWord());
     }
 
     /**
@@ -196,8 +196,8 @@ public class WordFrequencyTest {
     @Test
     public void testEqualsConsistency() {
         WordFrequency other = new WordFrequency("hello");
-        assertTrue("Equals should be consistent", wordFreq.equals(other));
-        assertTrue("Equals should be consistent", wordFreq.equals(other));
+        assertTrue("Equals consistent", wordFreq.equals(other));
+        assertTrue("Equals consistent", wordFreq.equals(other));
     }
 
     /**
@@ -205,7 +205,17 @@ public class WordFrequencyTest {
      */
     @Test
     public void testEqualsWithItself() {
-        assertTrue("Equals should return true comparing to itself", wordFreq.equals(wordFreq));
+        assertTrue("Equals return true comparing to itself", wordFreq.equals(wordFreq));
+    }
+
+    /**
+     * Test equals method with different words that share the same case.
+     */
+    @Test
+    public void testEqualsDifferentWordSameCase() {
+        WordFrequency wf1 = new WordFrequency("helloooooo");
+        WordFrequency wf2 = new WordFrequency("hellooo");
+        assertFalse("Different words will not be equal", wf1.equals(wf2));
     }
 
 }

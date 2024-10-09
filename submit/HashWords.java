@@ -57,7 +57,8 @@ public class HashWords {
      * @return the WordFrequency object
      */
     private WordFrequency getUsingWord(String w) {
-        int key = hashKey(w);
+        String word = w.toLowerCase();
+        int key = hashKey(word);
         
         while (table[key] != null) {
             if (table[key].getWord().equals(w)) {
@@ -80,7 +81,8 @@ public class HashWords {
      * @return the count of (w) if it exists in the table; otherwise, 0
      */
     public int frequency(String w) {
-        WordFrequency wf = getUsingWord(w);
+        String word = w.toLowerCase();
+        WordFrequency wf = getUsingWord(word);
 
         if (wf != null) {
             return wf.getCount();
@@ -156,7 +158,7 @@ public class HashWords {
             key = (key + 1) % size;  // Keep probing to find an empty slot
         }
 
-        table[key] = wf;  // Insert the word at the available position
+        table[key] = wf;  // Insert the word at available position
     }
 
 
@@ -194,7 +196,7 @@ public class HashWords {
     /**
      * Finds the most common word in the table.
      * 
-     * @return the word with the highest count of appearance in the table
+     * @return the word with the highest appearance in the table
      */
     public String mostCommonWord() {
         String word = null;
